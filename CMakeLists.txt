@@ -12,7 +12,7 @@ set(APP_NAME GlistApp)
 
 
 ########## USED PLUGINS LIST ##########
-set(PLUGINS)
+set(PLUGINS gipOpenCV)
 
 
 ##################################################

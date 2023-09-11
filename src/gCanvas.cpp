@@ -17,14 +17,41 @@ gCanvas::~gCanvas() {
 }
 
 void gCanvas::setup() {
-	logo.loadImage("glistengine_logo.png");
+    root->getAppManager()->setCurrentGUIFrame(&frame);
+	frame.setSizer(&framesizer1);
+	framesizer1.setSize(1, 3);
+	framesizer1.enableBorders(true);
+
+	float columnprs[3] = {0.31f, 0.49f, 0.2f};
+	framesizer1.setColumnProportions(columnprs);
+	float lineprs[4] = {0.3f, 0.3f, 0.3f, 0.1f};
+	panel3sizer.setLineProportions(lineprs);
+
+
+	panel1sizer.setSize(1, 1);
+	panel2sizer.setSize(1, 1);
+	panel3sizer.setSize(4, 2);
+
+	panel1.setSizer(&panel1sizer);
+	panel2.setSizer(&panel2sizer);
+	panel3.setSizer(&panel3sizer);
+
+
+	framesizer1.setControl(0, 0, &panel1);
+    framesizer1.setControl(0, 1, &panel2);
+    framesizer1.setControl(0, 2, &panel3);
+
+    panel2sizer.setControl(0, 0, &cvcamera);
+    panel2.setTitle("camera");
+
 }
 
 void gCanvas::update() {
+//	gLogi("gCanvas") << "w:" << screen.getWidth() << ", h:" << screen.getHeight();
 }
 
 void gCanvas::draw() {
-	logo.draw((getWidth() - logo.getWidth()) / 2, (getHeight() - logo.getHeight()) / 2);
+//	logo.draw((getWidth() - logo.getWidth()) / 2, (getHeight() - logo.getHeight()) / 2);
 }
 
 void gCanvas::keyPressed(int key) {
@@ -78,4 +105,3 @@ void gCanvas::showNotify() {
 void gCanvas::hideNotify() {
 
 }
-
